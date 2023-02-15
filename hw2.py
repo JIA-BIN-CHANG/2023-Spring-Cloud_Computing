@@ -19,7 +19,10 @@ for file in files_in_dir:
 hostname = socket.gethostname()
 ip_address = socket.gethostbyname(hostname)
 
-with open(os.path.join('./', 'output', 'result.txt'), 'w') as f:
+if not os.path.exists('/home/output'):
+    os.mkdir('/home/output')
+
+with open(os.path.join('/home', 'output', 'result.txt'), 'w') as f:
     f.write('text file locations:\n')
     for file in files_in_dir:
         data_path = os.path.join('/home/data/', file)
